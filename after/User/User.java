@@ -13,6 +13,8 @@ public abstract class User {
 	private String name;
 	private Date lastLogin;
 	
+	public abstract int showMenu();
+	
 	public String getUsername() {
 		return username;
 	}
