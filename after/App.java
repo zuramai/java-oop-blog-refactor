@@ -50,6 +50,10 @@ public class App {
 	}
 	
 	public void logout() {
+		this.auth.logout();
+		System.out.println("Success logout!");
 		
+		// Go back to login page
+		this.login();
 	}
 }
