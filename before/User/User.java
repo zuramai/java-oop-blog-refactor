@@ -1,4 +1,4 @@
-package User;
+package blog.User;
 
 import java.util.Date;
 
@@ -8,10 +8,10 @@ import User.Role.Member;
 import User.Role.Roles;
 
 public abstract class User {
-	private String username;
-	private String password;
-	private String name;
-	private Date lastLogin;
+	public String username;
+	public String password;
+	public String name;
+	public Date lastLogin;
 	
 	public abstract int showMenu();
 	public abstract String getRole();
