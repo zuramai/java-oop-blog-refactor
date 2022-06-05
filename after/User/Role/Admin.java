@@ -11,9 +11,10 @@ public class Admin extends User {
 
 	@Override
 	public int showMenu() {
-		int chooseMenu;
+		int chooseMenu = 0;
 		
 		Scanner s = new Scanner(System.in);
+		
 		System.out.println("Choose action:");
 		System.out.println("1. Show articles");
 		System.out.println("2. Add articles");

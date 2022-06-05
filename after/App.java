@@ -47,6 +47,7 @@ public class App {
 		
 		System.out.println("Success login! Welcome "+this.auth.getLoggedInUser().getName());
 		
+		this.mainMenu();
 	}
 	
 	public void logout() {
@@ -55,5 +56,31 @@ public class App {
 		
 		// Go back to login page
 		this.login();
+	}
+	
+	public void mainMenu() {
+		int chooseMenu = this.auth.getLoggedInUser().showMenu();
+		
+		// One liner
+		if(chooseMenu == 1) this.showArticles();
+		else if(chooseMenu == 2) this.addArticle();
+		else if(chooseMenu == 3) this.showUsers();
+		else if(chooseMenu == 4) this.addArticle();
+	}
+	
+	public void addUser() {
+		
+	}
+	
+	public void showUsers() {
+		
+	}
+	
+	public void showArticles() {
+		
+	}
+	
+	public void addArticle() {
+		
 	}
 }
