@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.Locale.Category;
 
 import Article.Article;
 import Article.ArticleCategory;
@@ -67,9 +68,40 @@ public class App {
 		else if(chooseMenu == 3) this.showUsers();
 		else if(chooseMenu == 4) this.addArticle();
 	}
+
+	public void printCategories() {
+		System.out.println("> Category list");
+
+		for(ArticleCategory category : this.categories) {
+			System.out.println("- "+category.getName());
+		}
+	}
 	
 	public void addUser() {
 		
+		Scanner s = new Scanner(System.in);
+		System.out.println("======= Add User ========");
+		System.out.println("Username: ");
+		String username = s.next();
+		System.out.println("Password: ");
+		String password = s.next();
+		System.out.println("Name: ");
+		String name = s.next();
+		System.out.println("Role [Member/Admin]: ");
+		String roleString = s.next();
+		Roles role = roleString.equalsIgnoreCase("Admin") ? Roles.Admin : Roles.Member;
+		
+		User user = User.create(role, username, password, name);
+
+		this.users.add(user);
+	}
+
+	public ArticleCategory getCategory(String category) {
+		ArticleCategory articleCategory = null;
+		for(ArticleCategory currentCategory : this.categories) {
+			if(currentCategory.getName().equals(category)) articleCategory = currentCategory;
+		}
+		return articleCategory;
 	}
 	
 	public void showUsers() {
@@ -81,6 +113,24 @@ public class App {
 	}
 	
 	public void addArticle() {
-		
+		Scanner s = new Scanner(System.in);
+		System.out.println("======= Add Article ========");
+		System.out.println("Title: ");
+		String title = s.next();
+		System.out.println("Content: ");
+		String content = s.next();
+
+		ArticleCategory category;
+
+		// Validate category
+		do {
+			System.out.println("Category: ");
+			String categoryString = s.next();
+			category = getCategory(categoryString);
+		} while(category == null);
+
+		Article article = new Article(category, title, content, this.auth.getLoggedInUser());
+
+		this.articles.add(article);
 	}
 }
