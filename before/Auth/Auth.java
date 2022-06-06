@@ -8,10 +8,13 @@ public class Auth {
 	private User loggedInUser;
 	
 	public boolean login(Vector<User> users, String username, String password) {
-		User user = null;
-		for(User u : users) {
+		// Logged in user
+		User u = null;
+
+		// uc = current user in loop
+		for(User uc : users) {
 			if(u.checkCredentials(username, password)) {
-				user = u;
+				u = uc;
 				break;
 			}
 		}
