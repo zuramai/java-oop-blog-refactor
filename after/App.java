@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.Vector;
 import java.util.Locale.Category;
 
@@ -7,6 +6,7 @@ import Article.ArticleCategory;
 import Auth.Auth;
 import User.User;
 import User.Role.Roles;
+import utils.Scan;
 
 public class App {
 	public Vector<User> users = new Vector<>();
@@ -31,17 +31,16 @@ public class App {
 	
 	public void login() {
 //		Prompt login form
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Sign in");
 		
 		boolean isLoggedIn = false;
 		
 		while(isLoggedIn == false) {
 			System.out.print("Your username: ");
-			String username = scanner.next();
+			String username = Scan.scanString();
 			
 			System.out.print("Your Password: ");
-			String password = scanner.next();
+			String password = Scan.scanString();
 			
 			isLoggedIn = auth.login(users, username, password);
 			
@@ -69,7 +68,7 @@ public class App {
 			if(chooseMenu == 1) this.showArticles();
 			else if(chooseMenu == 2) this.addArticle();
 			else if(chooseMenu == 3) this.showUsers();
-			else if(chooseMenu == 4) this.addArticle();
+			else if(chooseMenu == 4) this.addUser();
 		}
 
 		System.out.println("Thank you for using the application!");
@@ -84,17 +83,15 @@ public class App {
 	}
 	
 	public void addUser() {
-		
-		Scanner s = new Scanner(System.in);
 		System.out.println("======= Add User ========");
 		System.out.println("Username: ");
-		String username = s.next();
+		String username = Scan.scanString();
 		System.out.println("Password: ");
-		String password = s.next();
+		String password = Scan.scanString();
 		System.out.println("Name: ");
-		String name = s.next();
+		String name = Scan.scanString();
 		System.out.println("Role [Member/Admin]: ");
-		String roleString = s.next();
+		String roleString = Scan.scanString();
 		Roles role = roleString.equalsIgnoreCase("Admin") ? Roles.Admin : Roles.Member;
 		
 		User user = User.create(role, username, password, name);
@@ -133,19 +130,18 @@ public class App {
 	}
 	
 	public void addArticle() {
-		Scanner s = new Scanner(System.in);
 		System.out.println("======= Add Article ========");
 		System.out.println("Title: ");
-		String title = s.next();
+		String title = Scan.scanString();
 		System.out.println("Content: ");
-		String content = s.next();
+		String content = Scan.scanString();
 
 		ArticleCategory category;
 
 		// Validate category
 		do {
 			System.out.println("Category: ");
-			String categoryString = s.next();
+			String categoryString = Scan.scanString();
 			category = getCategory(categoryString);
 		} while(category == null);
 
