@@ -26,6 +26,7 @@ public class Article {
 		System.out.println("======== Article Info ========");
 		System.out.println("Slug: "+ this.getSlug());
 		System.out.println("Title: "+ this.getTitle());
+		System.out.println("Content: "+ this.getContent());
 		System.out.println("Created At: "+ this.getCreatedAt());
 		System.out.println("Author: "+ this.getAuthor().getName());
 		System.out.println("Category: "+ this.getCategory().getName());

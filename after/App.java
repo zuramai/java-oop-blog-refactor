@@ -120,12 +120,7 @@ public class App {
 	public void showArticles() {
 		System.out.println("====== Article List ======");
 		for(Article article : this.articles) {
-			System.out.println("- Title: " + article.getTitle());
-			System.out.println("  Slug: " + article.getSlug());
-			System.out.println("  Category: " + article.getCategory().getName());
-			System.out.println("  Content: " + article.getContent());
-			System.out.println("  Author: " + article.getAuthor().getName());
-			System.out.println("  Created At: " + article.getCreatedAt().toString());
+			article.show();
 		}
 	}
 	
